@@ -5,8 +5,7 @@ const MONGOURL1 = "mongodb://localhost/UsersList";
 async function connect() {
   try {
     await mongoose.connect(
-      process.env.MONGO_URI ||
-        "mongodb+srv://quanghieu:quanghieu@cluster0.ul1hj.mongodb.net/UsersList?retryWrites=true&w=majority",
+      process.env.MONGO_URI || "mongodb://localhost/UsersList",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
