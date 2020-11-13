@@ -4,15 +4,12 @@ const MONGOURL =
 const MONGOURL1 = "mongodb://localhost/UsersList";
 async function connect() {
   try {
-    await mongoose.connect(
-      process.env.MONGO_URI || "mongodb://localhost/UsersList",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
-      }
-    );
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    });
     console.log("Connect successfully");
   } catch (error) {
     console.log("Connect faile");
