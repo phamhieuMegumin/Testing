@@ -5,15 +5,12 @@ const MONGOURL1 = "mongodb://localhost/UsersList";
 async function connect() {
   console.log(process.env.MONGO_URI);
   try {
-    await mongoose.connect(
-      "mongodb+srv://quanghieu:quanghieu@cluster0.ul1hj.mongodb.net/UsersList?retryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
-      }
-    );
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    });
     console.log("Connect successfully");
   } catch (error) {
     console.log("Connect faile");
