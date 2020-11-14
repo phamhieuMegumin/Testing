@@ -58,7 +58,13 @@ userRouter.post(
       res.cookie("access_token", token, {
         httpOnly: true,
       });
-      res.status(200).json({ isAuthenticated: true, user: { username, role } });
+      res
+        .status(200)
+        .json({
+          isAuthenticated: true,
+          user: { username, role },
+          token: token,
+        });
     }
   }
 );
