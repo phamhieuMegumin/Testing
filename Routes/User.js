@@ -58,7 +58,6 @@ userRouter.post(
       res.cookie("access_token", token, {
         httpOnly: true,
         sameSite: true,
-        path: "/Giphy-app",
       });
       res.status(200).json({ isAuthenticated: true, user: { username, role } });
     }
