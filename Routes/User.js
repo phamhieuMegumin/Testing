@@ -55,13 +55,15 @@ userRouter.post(
     if (req.isAuthenticated()) {
       const { _id, username, role } = req.user;
       const token = signToken(_id);
-      res.cookie("access_token", token, {
-        httpOnly: true,
-        sameSite: true,
-      });
+      // res.cookie("access_token", token, {
+      //   httpOnly: true,
+      //   sameSite: true,
+      // });
+      // res.header("auth-token", token).send(token);
       res.status(200).json({
         isAuthenticated: true,
         user: { username, role },
+        token: token,
       });
     }
   }

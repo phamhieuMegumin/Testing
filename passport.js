@@ -5,8 +5,8 @@ const JwtStrategy = require("passport-jwt").Strategy;
 
 const cookieExtractor = (req) => {
   let token = null;
-  if (req && req.cookies) {
-    token = req.cookies["access_token"];
+  if (req) {
+    token = req.header("auth_token");
   }
   return token;
 };
