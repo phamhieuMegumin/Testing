@@ -73,7 +73,7 @@ userRouter.get(
   "/logout",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    res.clearCookie("access_token");
+    // res.clearCookie("access_token");
     res.json({ user: { username: "", role: "" }, success: true });
   }
 );
@@ -134,6 +134,24 @@ userRouter.get(
       res
         .status(403)
         .json({ message: { msgBody: "you are not an admin", msgError: true } });
+    }
+  }
+);
+
+userRouter.post(
+  "/delete",
+  passport.isAuthenticated("jwt", { session: false }),
+  async (req, res) => {
+    const { url } = req.body;
+    try {
+      await Todo.findOneAndRemove({ url });
+      res
+        .status(200)
+        .json({ message: { msgBody: "delete success", msgError: false } });
+    } catch (error) {
+      res.status(500).json({
+        message: { msgBody: "Error has occured", msgError: true },
+      });
     }
   }
 );
