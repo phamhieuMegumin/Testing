@@ -140,7 +140,7 @@ userRouter.get(
 
 userRouter.post(
   "/delete",
-  passport.isAuthenticated("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     const { url } = req.body;
     try {
